@@ -1,0 +1,71 @@
+﻿@{
+    ViewData["Title"] = "Estoque";
+}
+
+@model List<Produto>
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css">
+
+<form method="get" action="@Url.Action("Estoque")">
+        <input type="text" name="searchQuery" placeholder="Buscar" class="form-control"/>
+        <br />
+</form>
+
+<div class="text-center">
+    <h1 class="display-4">Estoque</h1>
+</div>
+    <br />
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>
+                    Id
+                </th>
+                <th>
+                    Valor
+                </th>
+                <th>
+                    Nome
+                </th>
+                <th>
+                    Quantidade
+                </th>
+                <th>
+                    Ações
+                </th>
+            </tr>
+        </thead>
+        <tbody>
+            @{
+                foreach (var produto in Model)
+                {
+                    <tr>
+
+                        <td>
+                            @produto.Id
+                        </td>
+                        <td>
+                            @produto.Preco
+                        </td>
+                        <td>
+                            @produto.Nome
+                        </td>
+                        <td>
+                            @produto.Quantidade
+                        </td>
+                        <td>
+
+                        <a class="btn btn-primary" asp-action="CreateEditItem" asp-route-id="@produto.Id"><i class="fas fa-edit"></i></a>
+                        <button class="btn btn-danger" asp-action="DeleteProduto" asp-route-id="@produto.Id"><i class="fas fa-trash"></i></button>
+                            
+                        </td>
+                    </tr>
+                }
+            }
+        </tbody>        
+</table>
+
+<a class="btn btn-secondary" asp-controller="Home" asp-action="CreateEditItem"><i class="fas fa-plus"></i></a>
+

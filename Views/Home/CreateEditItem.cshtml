@@ -1,0 +1,26 @@
+﻿@{
+    ViewData["Title"] = "Create / Edit";
+}
+
+@model WebMVC_Tests.Models.Produto
+
+<div class="text-center">
+    <h1 class="display-4"></h1>
+</div>
+
+<form asp-action="CreateEditItemForm" asp-controller="Home">
+    
+    <input hidden class="form-control" type="number" placeholder="0" asp-for="Id"/>
+
+    <label class="mt-4">Nome</label>
+    <input class="form-control" type="text" placeholder=""  asp-for="Nome" required/>
+
+    <label class="mt-4">Valor $</label>
+    <input class="form-control" type="number" placeholder="0,00" asp-for="Preco" step="0.01" required/>
+
+
+    <label class="mt-4">Quantidade</label>
+    <input class="form-control" type="text" placeholder="0" asp-for="Quantidade"/>
+
+    <button class="btn btn-primary mt-4" type="submit">Ok</button>
+</form>
